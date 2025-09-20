@@ -26,18 +26,6 @@ pipeline {
             }
         }
 
-        stage('Prepare Logo') {
-            steps {
-                script {
-                    if (env.BRANCH_NAME == 'main') {
-                        sh 'cp logos/logo-main.svg src/assets/logo.svg'
-                    } else if (env.BRANCH_NAME == 'dev') {
-                        sh 'cp logos/logo-dev.svg src/assets/logo.svg'
-                    }
-                }
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 script {
