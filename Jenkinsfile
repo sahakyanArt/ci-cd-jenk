@@ -7,6 +7,10 @@ pipeline {
         DEV_PORT  = "3001"
     }
 
+    tools {
+        node 'node7.8.0'
+    }
+
     stages {
         stage('Checkout') {
             steps {
