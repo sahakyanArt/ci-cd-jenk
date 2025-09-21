@@ -32,7 +32,7 @@ pipeline {
         }
 
         stage('Build') {
-            agent { docker { image 'node:7.8' } }
+            // agent { docker { image 'node:7.8' } }
             steps {
                 sh 'npm install'
             }
