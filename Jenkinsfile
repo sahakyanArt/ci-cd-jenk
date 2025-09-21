@@ -61,7 +61,9 @@ pipeline {
                 script {
                     def imageName = env.BRANCH_NAME == 'main' ? 'nodemain:v1.0' : 'nodedev:v1.0'
                     def vulnerabilities = sh(
-                        script: "trivy image --exit-code 0 --severity HIGH,MEDIUM,LOW --no-progress ${imageName}",
+                        script: "docker run --rm \
+                        -v /var/run/docker.sock:/var/run/docker.sock \
+                        aquasec/trivy:latest image --exit-code 0 --severity HIGH,MEDIUM,LOW --no-progress ${imageName}",
                         returnStdout: true
                     ).trim()
                     echo "Vulnerabilities report:\n${vulnerabilities}"
