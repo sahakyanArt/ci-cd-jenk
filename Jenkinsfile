@@ -26,7 +26,7 @@ pipeline {
                             -v $PWD:/workspace \
                             -w /workspace \
                             hadolint/hadolint \
-                            hadolint --failure-threshold never Dockerfile
+                            hadolint --no-fail Dockerfile
                     '''            
                     }
         }
